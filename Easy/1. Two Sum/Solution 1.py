@@ -1,20 +1,12 @@
+# https://leetcode.com/problems/two-sum/
+
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        # Step 1: Initialize a hash map
-        value_to_index = {}
+        value_to_index = dict()
 
-        # Step 2: Iterate through the array
-        for index, value in enumerate(nums):
-            complement = target - value
+        for index, num in enumerate(nums):          
 
-            # Step 3: Check if the complement is in the hash map
-            if complement in value_to_index:
-                # Step 4: Return the indices of the two numbers
-                return [index , value_to_index[complement]]
-
-            else:
-                # Step 5: Store the current number and its index
-                value_to_index[value] =  index
-
-        # If no solution is found, returning an empty list (based on problem constraints, theoretically this should not happen)
-        return []
+            if num in value_to_index:
+                return [value_to_index[num], index]
+            
+            value_to_index[target - num] =  index
